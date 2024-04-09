@@ -1,0 +1,9 @@
+INSERT INTO public.users(
+	id, "fullName", phone, email)
+	VALUES (1, 'Пупкин Василий Петрович', '81233210000', 'ya@ya.ru');
+INSERT INTO public.users(
+	id, "fullName", phone, email)
+	VALUES (2, 'Пупкина Василиса Петровна', '81233210001', 'yaya@ya.ru');
+INSERT INTO public.users(
+	id, "fullName", phone, email)
+	VALUES (3, 'Пупкин Петр Петрович', '81233210002', 'yayaya@ya.ru');

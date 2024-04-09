@@ -1,0 +1,12 @@
+INSERT INTO public.parts(
+	id, name, description)
+	VALUES (1, 'болт', 'обычный болт');
+INSERT INTO public.parts(
+	id, name, description)
+	VALUES (2, 'винт', 'обычный винт');
+INSERT INTO public.parts(
+	id, name, description)
+	VALUES (3, 'шуруп', 'обычный шуруп');
+INSERT INTO public.parts(
+	id, name, description)
+	VALUES (4, 'доска', 'обычная доска');
