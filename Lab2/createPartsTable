@@ -1,0 +1,16 @@
+-- Table: public.parts
+
+-- DROP TABLE IF EXISTS public.parts;
+
+CREATE TABLE IF NOT EXISTS public.parts
+(
+    id integer NOT NULL,
+    name character varying COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    CONSTRAINT parts_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.parts
+    OWNER to postgres;

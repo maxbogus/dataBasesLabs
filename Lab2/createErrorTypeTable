@@ -1,0 +1,15 @@
+-- Table: public.errorType
+
+-- DROP TABLE IF EXISTS public."errorType";
+
+CREATE TABLE IF NOT EXISTS public."errorType"
+(
+    id integer NOT NULL,
+    label text COLLATE pg_catalog."default",
+    CONSTRAINT "errorType_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."errorType"
+    OWNER to postgres;

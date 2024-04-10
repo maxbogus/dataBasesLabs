@@ -1,0 +1,40 @@
+-- Table: public.purchases
+
+-- DROP TABLE IF EXISTS public.purchases;
+
+CREATE TABLE IF NOT EXISTS public.purchases
+(
+    id integer NOT NULL,
+    "orderId" integer,
+    "partId" integer,
+    CONSTRAINT purchases_pkey PRIMARY KEY (id),
+    CONSTRAINT "orderId" FOREIGN KEY ("orderId")
+        REFERENCES public.orders (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "partId" FOREIGN KEY ("partId")
+        REFERENCES public.parts (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.purchases
+    OWNER to postgres;
+-- Index: fki_orderId
+
+-- DROP INDEX IF EXISTS public."fki_orderId";
+
+CREATE INDEX IF NOT EXISTS "fki_orderId"
+    ON public.purchases USING btree
+    ("orderId" ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: fki_partId
+
+-- DROP INDEX IF EXISTS public."fki_partId";
+
+CREATE INDEX IF NOT EXISTS "fki_partId"
+    ON public.purchases USING btree
+    ("partId" ASC NULLS LAST)
+    TABLESPACE pg_default;

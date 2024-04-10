@@ -1,0 +1,31 @@
+-- Table: public.orders
+
+-- DROP TABLE IF EXISTS public.orders;
+
+CREATE TABLE IF NOT EXISTS public.orders
+(
+    id integer NOT NULL,
+    adress text COLLATE pg_catalog."default",
+    "deliveryTime" date,
+    phone text COLLATE pg_catalog."default",
+    customer integer,
+    CONSTRAINT orders_pkey PRIMARY KEY (id),
+    CONSTRAINT "customerId" FOREIGN KEY (customer)
+        REFERENCES public.users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.orders
+    OWNER to postgres;
+-- Index: fki_customerId
+
+-- DROP INDEX IF EXISTS public."fki_customerId";
+
+CREATE INDEX IF NOT EXISTS "fki_customerId"
+    ON public.orders USING btree
+    (customer ASC NULLS LAST)
+    TABLESPACE pg_default;

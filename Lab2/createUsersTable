@@ -1,0 +1,31 @@
+-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id integer NOT NULL,
+    "fullName" text COLLATE pg_catalog."default",
+    phone text COLLATE pg_catalog."default",
+    email text COLLATE pg_catalog."default",
+    "roleType" integer,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT "roleType" FOREIGN KEY ("roleType")
+        REFERENCES public.roles (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;
+-- Index: fki_roleType
+
+-- DROP INDEX IF EXISTS public."fki_roleType";
+
+CREATE INDEX IF NOT EXISTS "fki_roleType"
+    ON public.users USING btree
+    ("roleType" ASC NULLS LAST)
+    TABLESPACE pg_default;

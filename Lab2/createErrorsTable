@@ -1,0 +1,28 @@
+-- Table: public.errors
+
+-- DROP TABLE IF EXISTS public.errors;
+
+CREATE TABLE IF NOT EXISTS public.errors
+(
+    id integer NOT NULL,
+    type integer,
+    CONSTRAINT errors_pkey PRIMARY KEY (id),
+    CONSTRAINT "typeId" FOREIGN KEY (type)
+        REFERENCES public."errorType" (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.errors
+    OWNER to postgres;
+-- Index: fki_typeId
+
+-- DROP INDEX IF EXISTS public."fki_typeId";
+
+CREATE INDEX IF NOT EXISTS "fki_typeId"
+    ON public.errors USING btree
+    (type ASC NULLS LAST)
+    TABLESPACE pg_default;
